@@ -4,7 +4,8 @@
   "description": "Authentication Sprint Challenge",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js"
+    "server": "nodemon index.js",
+    "test": "DB_ENV=testing jest --watch"
   },
   "repository": {
     "type": "git",
@@ -26,9 +27,15 @@
     "express-session": "^1.17.0",
     "helmet": "^3.21.2",
     "knex": "^0.19.2",
-    "sqlite3": "^4.1.0"
+    "sqlite3": "^4.1.0",
+    "superagent": "^5.1.0"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.1",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
