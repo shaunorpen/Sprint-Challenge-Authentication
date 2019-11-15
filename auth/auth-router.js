@@ -18,18 +18,18 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
-  if (username && password) {
-    const user = await users("users")
+  const user = await users("users")
       .where({ username })
       .first();
+  if ((username && password) && user) {
     const result = bcrypt.compareSync(password, user.password);
     if (result) {
       res.status(200).json({ message: "Welcome! You're logged in!" });
     } else {
-      res.status(401).json({ message: "Invalid credentials" });
+      res.status(401).json({ message: "Invalid password" });
     }
   } else {
-    res.status(400).json({ message: "Please provide a username and password" });
+    res.status(400).json({ message: "Please provide a valid username and password" });
   }
 });
 
